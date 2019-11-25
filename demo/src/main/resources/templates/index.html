@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://thymeleaf.org"><div class="col-6">
+    <h2>Current Users</h2>
+    Search by Zip Code:
+    <form action="#" th:action="@{/users}" th:object=${formObject} method="post">
+        Zip: <input id="zip" name="zip" type="text" th:field="*{zip}"/>
+        </p>
+        <p>
+            <input type="submit" value="Search" />
+        </p>
+    </form>
+    <br>
+</div>
+
+<th:block th:each="person: ${users}">
+    <div class="row">
+        <div class="col">
+            <h5 th:text="${person.name}"></h5>
+            <p th:text="${person.street + ', ' + person.city + ' ' + person.state + ', ' + person.zip}"></p>
+        </div>
+        <hr>
+    </div>
+</th:block>
